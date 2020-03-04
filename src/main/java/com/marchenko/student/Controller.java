@@ -12,7 +12,6 @@ public class Controller {
     @Autowired
     private StudentRepo studentRepo;
 
-
     @GetMapping
     public String main(Map<String, Object> model){
      Iterable<Student> persons= studentRepo.findAll();
