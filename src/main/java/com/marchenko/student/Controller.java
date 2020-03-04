@@ -3,12 +3,14 @@ package com.marchenko.student;
 import com.marchenko.student.domain.Student;
 import com.marchenko.student.repos.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class Controller {
+
     @Autowired
     private StudentRepo studentRepo;
 
@@ -42,9 +44,14 @@ public class Controller {
         model.put("persons", persons);
         return "redirect:/";
     }
+
     @RequestMapping(value = "/entities", method = RequestMethod.GET)
     public String EntitiesPage() {
 
         return "entities";
     }
+    @GetMapping(value = {"/student/{studentId}/edit"})
+    public String editStudent(Model model, @PathVariable Long studentId,@ModelAttribute("student") Student student)
+
+    { return "redirect:/"; }
 }

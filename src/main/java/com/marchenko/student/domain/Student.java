@@ -1,9 +1,6 @@
 package com.marchenko.student.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +10,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
+
+@AllArgsConstructor
 @ToString
 @Table(name = "student")
  public class Student implements Serializable {
@@ -38,6 +36,8 @@ import java.util.Set;
         this.name = name;
         this.surname = surname;
     }
+
+    public Student() {}
 }
 
 

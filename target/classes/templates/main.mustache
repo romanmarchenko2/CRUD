@@ -21,15 +21,17 @@
         <th>ID</th>
         <th>NAME</th>
         <th>SURNAME</th>
+        <th>EDIT</th>
     </tr>
 
     {{#persons}}
     <div>
-        <tr >
-            <td>{{id}}</td>
-            <td>{{name}}</td>
-            <td>{{surname}}</td>
-        </tr>
+<tr>
+    <td>{{id}}</td>
+    <td>{{name}}</td>
+    <td>{{surname}}</td>
+    <td><button onclick="window.location.href = 'http://localhost:8080/student/{{id}}/edit';">Edit</button></td>
+</tr>
     </div>
     {{/persons}}
 </table>
