@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @org.springframework.stereotype.Controller
 public class Controller {
@@ -25,7 +26,6 @@ public class Controller {
     public String add(@RequestParam String name,@RequestParam String surname, @RequestParam Map<String, Object> model) {
         Student student = new Student(name,surname);
         studentRepo.save(student);
-
         Iterable<Student> persons = studentRepo.findAll();
         model.put("persons", persons);
         return "redirect:/";
@@ -38,20 +38,26 @@ public class Controller {
         return "view";
     }
 
-    @RequestMapping(value = "/main")
+    @GetMapping(value = "/main")
     public String EditingPage(Map<String, Object> model) {
         Iterable<Student> persons= studentRepo.findAll();
         model.put("persons", persons);
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/entities", method = RequestMethod.GET)
+    @GetMapping(value = "/entities")
     public String EntitiesPage() {
 
         return "entities";
     }
-    @GetMapping(value = {"/student/{studentId}/edit"})
-    public String editStudent(Model model, @PathVariable Long studentId,@ModelAttribute("student") Student student)
 
-    { return "redirect:/"; }
+    @GetMapping(value = "/student/{studentId}")
+    public String getUserById(Model model, @PathVariable Long studentId) {
+        Optional<Student> student = null;
+        student = studentRepo.findById(studentId);
+        model.addAttribute("student", student);
+        return "student";
+    }
+
+
 }

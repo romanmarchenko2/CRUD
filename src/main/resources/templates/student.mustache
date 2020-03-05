@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>User Details</title>
+
+</head>
+<body>
+<h1>View Student</h1>
+<a href="/main">Back to User List</a>
+
+
+<div>
+        {{#persons}}
+            <table border="0">
+                <tr>
+                    <td>ID</td>
+                    <td>:</td>
+                    <td>{{id}}</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>:</td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <td>Surname</td>
+                    <td>:</td>
+                    <td>{{surname}}</td>
+                </tr>
+
+                </tr>
+            </table>
+        {{/persons}}
+</div>
+
+</body>
+</html>

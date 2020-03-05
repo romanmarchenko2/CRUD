@@ -1,21 +1,27 @@
 <html >
 
 <body>
-<div> <h1>Editing Page</h1></div>
-    <div >
+
+<div>
+    <h1 align="center">View Page</h1>
+</div>
+
+<div align="center">
     <form method="post">
         <input type="text" name="name" placeholder="Enter name"/>
         <input type="text" name="surname" placeholder="Enter surname"/>
         <button type="submit">Add Record</button >
     </form>
-    <div>
+
+    <div align="center">
         <button onclick="window.location.href = 'http://localhost:8080/entities';">Page of Entities </button>
         <button onclick="window.location.href = 'http://localhost:8080/view';">Page of View</button>
     </div>
+
     </div>
 
-
-<div>
+<!--Table-->
+<div align="center">
 <table border="1" width="300">
     <tr>
         <th>ID</th>
@@ -30,7 +36,7 @@
     <td>{{id}}</td>
     <td>{{name}}</td>
     <td>{{surname}}</td>
-    <td><button onclick="window.location.href = 'http://localhost:8080/student/{{id}}/edit';">Edit</button></td>
+    <td align="center"><button onclick="window.location.href = 'http://localhost:8080/student/{{id}}';">Edit</button></td>
 </tr>
     </div>
     {{/persons}}
