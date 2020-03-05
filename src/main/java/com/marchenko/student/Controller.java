@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -31,7 +33,7 @@ public class Controller {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    @GetMapping(value = "/view")
     public String viewPage(Map<String, Object> model) {
         Iterable<Student> persons= studentRepo.findAll();
         model.put("persons", persons);
@@ -52,10 +54,15 @@ public class Controller {
     }
 
     @GetMapping(value = "/student/{studentId}")
-    public String getUserById(Model model, @PathVariable Long studentId) {
-        Optional<Student> student = null;
-        student = studentRepo.findById(studentId);
-        model.addAttribute("student", student);
+    public String editStudent( @PathVariable Long studentId,Map<String, Object> model) {
+
+        Optional<Student> student = studentRepo.findById(studentId);
+
+
+        model.put("student", student);
+        model.put("name",student.get().getName());
+        model.put("surname",student.get().getSurname());
+
         return "student";
     }
 

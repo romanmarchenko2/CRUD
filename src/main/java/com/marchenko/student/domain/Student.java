@@ -1,5 +1,6 @@
 package com.marchenko.student.domain;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,9 +21,11 @@ import java.util.Set;
     @Column(name = "student_id")
     private Long id;
 
+
     @Column(name = "name")
     private String name;
 
+    @NotNull
     @Column(name = "surname")
     private String surname;
 
@@ -51,6 +54,7 @@ import java.util.Set;
    public void setSurname(String surname) {
       this.surname = surname;
    }
+
 }
 
 
