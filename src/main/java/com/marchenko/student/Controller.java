@@ -55,10 +55,7 @@ public class Controller {
 
     @GetMapping(value = "/student/{studentId}")
     public String editStudent( @PathVariable Long studentId,Map<String, Object> model) {
-
         Optional<Student> student = studentRepo.findById(studentId);
-
-
         model.put("student", student);
         model.put("name",student.get().getName());
         model.put("surname",student.get().getSurname());
@@ -66,5 +63,13 @@ public class Controller {
         return "student";
     }
 
+    @PostMapping(value = {"/student/{studentId}"})
+    public String updateUser(@PathVariable Long studentId,@ModelAttribute("student") Student student,@ModelAttribute("name") String name,@ModelAttribute("surname") String surname) {
+        student.setId(studentId);
+        student.setName(name);
+        student.setSurname(surname);
+        studentRepo.save(student);
 
+        return "redirect:/";
+    }
 }

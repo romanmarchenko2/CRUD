@@ -1,34 +1,42 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>User Details</title>
-
 </head>
+
 <body>
-<h1>View Student</h1>
-<a href="/main">Back to User List</a>
 
+<div align="center">
 
-<div>
+    <h1>View Student</h1>
+
+    <a href="/main">Back to User List</a>
+
         {{#student}}
-            <table border="0">
+            <form method="post">
+
+            <table border="1">
                 <tr>
                     <td>ID</td>
-                    <td>:</td>
                     <td>{{studentId}}</td>
                 </tr>
+
                 <tr>
-                    <td>Name</td>
-                    <td>:</td>
-                    <td>{{name}}</td>
+                    <td>NAME</td>
+                    <td><input type="text" name="name" value="{{#student}}{{name}}{{/student}}" /></td>
                 </tr>
+
                 <tr>
-                    <td>Surname</td>
-                    <td>:</td>
-                    <td>{{surname}}</td>
+                    <td>SURNAME</td>
+                <td><input type="text" name="surname" value="{{#student}}{{surname}}{{/student}}" /></td>
                 </tr>
             </table>
+
+            <button type="submit" value="{{#update}}Update{{/update}}{{^update}}Update{{/update}}">Update Record</button >
+
+            </form>
         {{/student}}
 </div>
 

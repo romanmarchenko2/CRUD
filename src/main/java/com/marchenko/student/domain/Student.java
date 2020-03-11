@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@AllArgsConstructor
 @ToString
 @Table(name = "student")
  public class Student implements Serializable {
@@ -21,11 +20,9 @@ import java.util.Set;
     @Column(name = "student_id")
     private Long id;
 
-
     @Column(name = "name")
     private String name;
 
-    @NotNull
     @Column(name = "surname")
     private String surname;
 
@@ -39,21 +36,24 @@ import java.util.Set;
 
     public Student() {}
 
-   public String getName() {
+    public String getName() {
       return name;
    }
 
-   public void setName(String name) {
+    public void setName(String name) {
       this.name = name;
    }
 
-   public String getSurname() {
+    public String getSurname() {
       return surname;
    }
 
-   public void setSurname(String surname) {
-      this.surname = surname;
-   }
+    public void setSurname(String surname) { this.surname = surname; }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
+
 
 }
 
