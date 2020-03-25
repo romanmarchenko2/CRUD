@@ -1,16 +1,15 @@
-package com.marchenko.student.domain;
+package com.marchenko.student.model;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
-
+@Data
 @Entity
-@ToString
-@Table(name = "student")
+@Table(name = "STUDENT")
  public class Student implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,21 +19,30 @@ import java.util.Set;
     @Column(name = "student_id")
     private Long id;
 
+    @Size(min=2, max=15)
     @Column(name = "name")
     private String name;
 
+    @Size(min=2, max=30)
     @Column(name = "surname")
     private String surname;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private Set<Marks> Marks;
+    @Size(min=2, max=30)
+    @Column(name = "hobby")
+    private String hobby;
 
-    public Student(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    @OneToMany(mappedBy = "subject", fetch=FetchType.EAGER)
+    private Set<Hobby> stud_subject;
+
+    public Student() {
+    }
+    public String getHobby() {
+        return hobby;
     }
 
-    public Student() {}
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
 
     public String getName() {
       return name;
@@ -54,7 +62,13 @@ import java.util.Set;
 
     public void setId(Long id) { this.id = id; }
 
+    public Set<Hobby> getStud_subject() {
+        return stud_subject;
+    }
 
+    public void setStud_subject(Set<Hobby> stud_subject) {
+        this.stud_subject = stud_subject;
+    }
 }
 
 

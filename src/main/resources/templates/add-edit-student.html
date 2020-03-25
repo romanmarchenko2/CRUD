@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add or Edit</title>
+    <meta name="viewport" content="width=max-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+        .bg {
+            background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h3,h5{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+
+</head>
+
+<body class="bg">
+        <div class="container  mt-5" align="center">
+            <div class="col-mx-auto">
+
+                    <form action="#" th:action="@{/createStudent}" th:object="${student}"method="post">
+
+                        <h3>Add or Edit</h3>
+
+                        <div class="form-group col-md-6">
+                            <label for="name" class="col-form-label"><h5>Student's Name</h5></label>
+                            <input type="text" th:field="*{name}" class="form-control"
+                                   id="name" placeholder="Name" />
+                            <p th:if="${#fields.hasErrors('name')}"class="alert alert-danger" role="alert">
+                                Fill in the required field!
+                            </p>
+                        </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label for="surname" class="col-form-label"><h5>Student's Surname</h5></label>
+                                <input type="text" th:field="*{surname}" class="form-control"
+                                            id="surname" placeholder="Surname" align="center"  />
+                                <p th:if="${#fields.hasErrors('surname')}"class="alert alert-danger" role="alert">
+                                    Fill in the required field!
+                                </p>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="hobby" class="col-form-label"><h5>Student's Hobby</h5></label>
+                                <input type="text"  th:field="*{hobby}"class="form-control"
+                                       id="hobby" placeholder="Hobby" />
+                                <p th:if="${#fields.hasErrors('hobby')}"class="alert alert-danger" role="alert">
+                                    Fill in the required field!
+                                </p>
+                            </div>
+
+                            <input type="hidden" id="id" th:field="*{id}">
+
+                        <div class="col-md-11">
+                                 <div>
+                                    <button type="submit" class="btn btn-outline-primary" value="Submit">
+                                      Submit  <i class="fas fa-save mx-3 my-3"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary"onclick="window.location.href = 'http://localhost:8080/';">
+                                        View Page  <i class="fas fa-user-friends mx-3 my-3"></i>
+                                    </button>
+                                </div>
+                        </div>
+                    </form>
+
+            </div>
+
+        </div>
+
+</body>
+
+</html>
